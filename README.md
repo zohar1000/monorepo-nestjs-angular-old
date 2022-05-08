@@ -12,7 +12,8 @@ The code which is shared between the apps and the server is in 'shared-stack' fo
 - webstorm - in case you use it then you need to upgrade it to version 2021.2 or above.
 - pnpm is used here to install dependencies, if you use npm or yarn then delete pnpm.lock.json and then install 
 
-## working with the shared folder
+## working with the shared folders
+#### shared-apps
 The applications are set to import content from the shared folder by using the path @shared-apps.<br>
 For example: import { SomeComponent } from '@shared-apps'.<br>
 The @shared-apps path references the file shared-apps/src/public-api.ts, this file exports
@@ -21,9 +22,14 @@ It exports the module SharedAppsModule which should
 contain the components, directives, etc.<br>
 Files that cannot be exported in SharedAppsModule, like enums and interfaces, will be directly exported in public-api.ts.
 
+#### shared-stack
+Imports are made with @shared-stack. 
+
+
 ## Serving an application
-To server an app, you can either run 'ng s APP_NAME'.<br>
-app1 is the default when serving, so 'ng s' is enough to run it.<br>
+To server an app, you can either run 'ng s APP_NAME' or 'npm run APP_NAME'.<br>
+app1 is the default when serving, so 'ng s' or 'npm start' are enough to run it.<br><br>
+To run the server: 'npm run server'
 
 
 ## set your working environment to LF:

@@ -8,6 +8,8 @@
     "app2": "ng serve app2",
     "app2:build": "ng build app2",
     "app2:lint": "ng lint app2",
+		"server": "nest start server",
+		"server:build": "nest build server",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
