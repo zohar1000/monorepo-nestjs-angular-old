@@ -1,0 +1,18 @@
+{
+  "/api/v1/*": "/$1",
+  "/app/user-management/user/:user": "/user/:user",
+  "/app/entry-details/user/:user/info": "/entryDetails/:user",
+  "/app/top-menu/user/:user": "/topMenu",
+  "/patient/:patient/info": "/patients/:patient",
+  "/patient/admissions/:record/info": "/patientAdmissions?recordId=:record",
+  "/patient/:patient/measurements": "/patientMeasurements?patientId=:patient",
+  "/patient/:patient/medical-history": "/medical-patient-tree-nodes_$:patient? patientId = :patient",
+  "/patient/:patient/medical-history": "/medical-patient-tree-nodes_$:patient? nodeId = :nodeId",
+  "/patient/:patient/documents-archive": "/document-archive-tree-nodes_$:patient? patientId = :patient",
+  "/patient/:patient/documents-archive": "/document-archive-tree-nodes_$:patient? nodeId = :nodeId",
+  "/structuredSentenceItems\\?componentId&tableCode&folderRowId&fieldId&fieldActionTitle&hospitalCode&unitId&parentId&searchValue&searchType&order": "/structuredSentenceItems?fieldId&parentId&sentence_like",
+  "/app/breadcrumbs/unit/:unit/patient/:patient/record/:record": "/breadcrumbs?unitId=:unit&patientId=:patient&recordId=:record",
+  "/cmr/meta-data-brief\\?unit=:unit&patient=:patient&record=:record": "/cmrs?unitId=:unit&patientId=:patient",
+  "/data-aggregation?record=:record": "/data-aggregations?recordId=:record"
+}
+
