@@ -1,22 +1,13 @@
 {
   "collection": "@nestjs/schematics",
 	"projects": {
-		"server1": {
+		"server": {
 			"type": "application",
-			"root": "servers/server1",
+			"root": "server",
 			"entryFile": "main",
-			"sourceRoot": "servers/server1/src",
+			"sourceRoot": "server/src",
 			"compilerOptions": {
-				"tsConfigPath": "servers/server1/tsconfig.build.json"
-			}
-		},
-		"server2": {
-			"type": "application",
-			"root": "servers/server2",
-			"entryFile": "main",
-			"sourceRoot": "servers/server2/src",
-			"compilerOptions": {
-				"tsConfigPath": "servers/server2/tsconfig.build.json"
+				"tsConfigPath": "server/tsconfig.json"
 			}
 		}
 	}

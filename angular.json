@@ -111,7 +111,7 @@
             "lintFilePatterns": [
               "app1/src/**/*.ts",
               "app1/src/**/*.html",
-              "apps-shared/src/app/**/*.ts"
+              "shared-apps/src/app/**/*.ts"
             ]
           }
         }
@@ -246,7 +246,7 @@
             "lintFilePatterns": [
               "app2/**/*.ts",
               "app2/**/*.html",
-              "apps-shared/src/app/**/*.ts"
+              "shared-apps/src/app/**/*.ts"
             ]
           }
         }

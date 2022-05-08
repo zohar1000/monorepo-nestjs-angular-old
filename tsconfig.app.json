@@ -1,0 +1,17 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+	"extends": "./tsconfig.json",
+  "compilerOptions": {
+		"moduleResolution": "node",
+    "module": "es2020",
+    "lib": ["es2020", "dom"],
+		"paths": {
+			"@angular/*": ["node_modules/@angular/*"],
+			"@shared-apps": ["shared-apps/src/public-api.ts"],
+			"@shared-stack/*": ["shared-stack/*"]
+		},
+		"typeRoots": [
+			"node_modules/@types"
+		]
+  }
+}
