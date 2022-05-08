@@ -32,7 +32,7 @@ app1 is the default when serving, so 'ng s' or 'npm start' are enough to run it.
 To run the server: 'npm run server'
 
 
-## set your working environment to LF:
+## Set your working environment to LF:
 Different operating systems have different characters to mark an end of a line.<br>
 Linux and Mac use the character LF (Line Feed) which is '\n'.<br>
 Windows uses a combination of 2 characters CR+LF (Carriage Return + Line Feed) which are '\r\n'.<br>
