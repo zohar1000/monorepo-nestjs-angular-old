@@ -37,7 +37,7 @@
       },
       "root": "app1",
       "sourceRoot": "app1/src",
-      "prefix": "cmr",
+      "prefix": "app1",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -47,9 +47,6 @@
             "main": "app1/src/main.ts",
             "polyfills": "app1/src/polyfills.ts",
             "tsConfig": "app1/tsconfig.app.json",
-            "allowedCommonJsDependencies": [
-              "peggy"
-            ],
             "inlineStyleLanguage": "scss",
             "assets": [
               "app1/src/favicon.ico",
@@ -151,7 +148,7 @@
       },
       "root": "app2",
       "sourceRoot": "app2/src",
-      "prefix": "lgn",
+      "prefix": "app2",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
