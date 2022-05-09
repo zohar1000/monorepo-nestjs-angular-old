@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TestModel } from '@shared-apps';
+import { TestModel } from '@shared-apps/models/test.model';
 
 @Component({
   selector: 'app-root',
