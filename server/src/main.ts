@@ -4,12 +4,11 @@ EnvService.initProcessEnvVars();
 import { AppModule } from './app.module';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AllExceptionsFilter } from './exception-filters/all-exceptions-filter';
-import { globalServices } from './consts/global-services.const';
 
 function setConsoleLog() {
   console['orgLog'] = console.log;
   console.log = (...params) => {
-    const time = (new Date()).toISOString().replace('T', ' ').substr(0, 19);
+    const time = (new Date()).toISOString().replace('T', ' ').substring(0, 19);
     console['orgLog'](time, ...params);
   };
 }
@@ -25,4 +24,4 @@ async function bootstrap() {
   console.log('server1 is listening on port:', process.env.SERVER1_PORT);
 }
 
-bootstrap();
+bootstrap().then();

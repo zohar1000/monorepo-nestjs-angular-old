@@ -12,7 +12,7 @@ export class FileService {
       return undefined;
     } else {
       const ix = folder.lastIndexOf(lastSegment);
-      return folder.substr(0, ix);
+      return folder.substring(0, ix);
     }
   }
 
@@ -74,7 +74,7 @@ export class FileService {
       }
 
       if (error && !options?.isReturnUndefinedOnError) {
-        reject(error)
+        reject(error);
       } else {
         resolve(ancestorPath);
       }

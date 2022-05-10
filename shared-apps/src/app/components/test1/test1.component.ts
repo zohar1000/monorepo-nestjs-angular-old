@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-interface  a {
-  title: string,
-  name: string
+interface a {
+  title: string;
+  name: string;
 }
 
 @Component({

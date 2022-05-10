@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { TestModel } from '@shared-apps/models/test.model';
+import { Test1Model } from '@shared-apps';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +7,10 @@ import { TestModel } from '@shared-apps/models/test.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  Test: TestModel = {
+  test: Test1Model = {
     prop1: 'a',
     prop2: 'a'
   };
 
-  title = 'login';
+  time = Date.now();
 }
