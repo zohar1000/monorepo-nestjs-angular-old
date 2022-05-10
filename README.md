@@ -16,7 +16,7 @@ The code which is shared between the apps and the server is in 'shared-stack' fo
 
 ## working with the shared folders
 ### shared-apps
-The applications can use 2 paths to import content from the shared-apps folder:
+The applications can use 2 paths to import content from the *shared-apps* folder:
 - **@shared-apps-module** - this path will refer to a module in the shared-apps folder (named SharedAppsModule) that will export
 all the shared components, directives and pipes.<br>
 The shared module of each application will import this module:
@@ -25,12 +25,17 @@ import { SharedAppsModule } from '@shared-apps-module';
 .
 imports: [SharedAppsModule];
 ````
-- **@shared-apps** - this path refers to the shared-apps/src/app folder.<br>
-we can use it to import anything from this folder, however it will be useful to import with it
-content that is not exported by SharedAppsModule, such as interfaces, enums, etc.<br>
-here is an import example:
+- **@shared-apps** - this path refers to the *shared-apps/src/index.ts* file.<br>
+index.ts file will contain the content that is not exported by SharedAppsModule, such as interfaces, enums, etc.<br>
+when importing content from index.ts it is enough to use the path '@shared-apps' only, without additional path segments.<br>
+for example, if we have some interface named SomeModel which resides in shared-apps/src/app/models/some.model.ts, then we will export
+it in index.ts like that:
 ````
-import { someModel } from '@shared-apps/models/some.model';
+export * from './app/models/some.model';
+````
+and we will import it in our component using only '@shared-apps' as the path:
+````
+import { someModel } from '@shared-apps';
 ````
 
 ### shared-stack
@@ -95,3 +100,12 @@ Here are the steps to create a new application:
 5. delete file APP_NAME/src/test.ts
 6. set tsconfig.app.json, take an example from app1/tsconfig.app.json or from another application.
 7. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
+
+
+<br>
+
+## Fixing vscode imports
+The following has to be made in order for vscode to recognize imports:
+- vscode needs tsconfig.json, if tsconfig.app.json is specified then vscode will ignore it
+- have "include" with index.ts (or public-api.ts) otherwise vscode will not provide imports
+
