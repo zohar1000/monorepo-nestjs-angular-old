@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Test1Model } from '@shared-apps';
+import { Test1Model } from '@shared-apps/models/test1.model';
+import { Severity } from './enums/severity.enum';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Test1Model } from '@shared-apps';
 })
 export class AppComponent {
   test: Test1Model = {
-    prop1: 'a',
+    prop1: Severity.Error,
     prop2: 'a'
   };
 

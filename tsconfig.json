@@ -15,6 +15,7 @@
     "noImplicitReturns": true,
 		"noPropertyAccessFromIndexSignature": false,
     "module": "es2020",
+    "moduleResolution": "node",
 		"outDir": "./dist",
 		"removeComments": true,
     "sourceMap": true,
@@ -24,7 +25,19 @@
     "strictFunctionTypes": true,
     "strictNullChecks": false,
     "strictPropertyInitialization": false,
-    "target": "es2020"
+		"lib": [
+      "es2020", 
+      "dom"
+    ],
+		"paths": {
+			"@angular/*": ["node_modules/@angular/*"],
+			"@shared-apps/*": ["shared-apps/src/app/*"],
+			"@shared-apps-module": ["shared-apps/src/shared-apps.module.ts"],
+			"@shared-stack/*": ["shared-stack/*"]
+		},
+		"typeRoots": [
+			"node_modules/@types"
+		]
 	},
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

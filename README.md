@@ -10,6 +10,7 @@ The code which is shared between the apps and the server is in 'shared-stack' fo
 - in order to avoid messages like "LF will be replaced by CRLF" when doing git add/commit we will switch to a consistent mode of work using LF only,
   so set your working environment to LF as described below.
 - webstorm - in case you use it then you need to upgrade it to version 2021.2 or above.
+- vscode - in case you use it you need to install extension 'Typescript Importer'.
 - pnpm is used here to install dependencies, if you use npm or yarn then delete pnpm.lock.json and then install
 
 <br>
@@ -25,17 +26,11 @@ import { SharedAppsModule } from '@shared-apps-module';
 .
 imports: [SharedAppsModule];
 ````
-- **@shared-apps** - this path refers to the *shared-apps/src/index.ts* file.<br>
-index.ts file will contain the content that is not exported by SharedAppsModule, such as interfaces, enums, etc.<br>
-when importing content from index.ts it is enough to use the path '@shared-apps' only, without additional path segments.<br>
-for example, if we have some interface named SomeModel which resides in shared-apps/src/app/models/some.model.ts, then we will export
-it in index.ts like that:
+
+- **@shared-apps** - this path refers to the *shared-apps/src/app/** folder hierarchy.<br>
+for example, if we have some interface named SomeModel which resides in shared-apps/src/app/models/some.model.ts, then we will import it like that:
 ````
-export * from './app/models/some.model';
-````
-and we will import it in our component using only '@shared-apps' as the path:
-````
-import { someModel } from '@shared-apps';
+import { someModel } from '@shared-apps/models/some.model';
 ````
 
 ### shared-stack
@@ -98,14 +93,7 @@ Here are the steps to create a new application:
   - (optional) delete "test" section
   - lint.options.lintFilePatterns:  add line "shared-apps/src/app/**/*.ts"
 5. delete file APP_NAME/src/test.ts
-6. set tsconfig.app.json, take an example from app1/tsconfig.app.json or from another application.
+6. change the entry in angular.json for the tsconfig file location to point to 'tsconfig.json' instead of 'tsconfig.app.json', that is because vscode works with tsconfig.json only.<br>
+in the app folder make sure to work with 'tsconfig.json', copy everything needed from 'tsconig.app.json' and then delete it.<br>
+look at another application's tsconfig.json for other configration needed such as paths (aliases) etc.
 7. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
-
-
-<br>
-
-## Fixing vscode imports
-The following has to be made in order for vscode to recognize imports:
-- vscode needs tsconfig.json, if tsconfig.app.json is specified then vscode will ignore it
-- have "include" with index.ts (or public-api.ts) otherwise vscode will not provide imports
-
