@@ -46,7 +46,7 @@
             "index": "app1/src/index.html",
             "main": "app1/src/main.ts",
             "polyfills": "app1/src/polyfills.ts",
-            "tsConfig": "app1/tsconfig.json",
+            "tsConfig": "app1/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "app1/src/favicon.ico",
@@ -157,7 +157,7 @@
             "index": "app2/src/index.html",
             "main": "app2/src/main.ts",
             "polyfills": "app2/src/polyfills.ts",
-            "tsConfig": "app2/tsconfig.json",
+            "tsConfig": "app2/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               "app2/src/favicon.ico",

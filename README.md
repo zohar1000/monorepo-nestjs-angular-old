@@ -1,26 +1,26 @@
 # Monorepo for Nest.js and Angular
 The repository contains skeleton for a server project and multiple client projects (apps).<br>
 There are 2 skeleton apps named app1 and app2.<br>
-The code which is shared between all apps is in 'shared-apps' folder.<br>
-The code which is shared between the apps and the server is in 'shared-stack' folder.<br>
 
 
-#### A few notes:
-- the cli setting for this repository are set to disregard test files (spec.ts) and they will not be generated when generating via the cli.
-- in order to avoid messages like "LF will be replaced by CRLF" when doing git add/commit we will switch to a consistent mode of work using LF only,
-  so set your working environment to LF as described below.
+The cli setting for this repository are set to disregard test files (spec.ts) and they will not be generated when generating via the cli.<br>
+
+pnpm is used here to install dependencies, if you use npm or yarn then delete pnpm.lock.json and then install.<br><br>
+
+### Before working make sure to set the following:
 - webstorm - in case you use it then you need to upgrade it to version 2021.2 or above.
-- vscode - in case you use it you need to install extension 'Typescript Importer'.
-- pnpm is used here to install dependencies, if you use npm or yarn then delete pnpm.lock.json and then install
+- in order to avoid messages like "CRLF will be replaced by LF" when doing git add/commit we will switch to a consistent mode of work using LF only,
+  so set your working environment to LF as described below.
 
-<br>
+<br><br>
 
 ## working with the shared folders
+The code which is shared between all apps is in 'shared-apps' folder.<br>
+The code which is shared between the apps and the server is in 'shared-stack' folder.<br>
 ### shared-apps
 The applications can use 2 paths to import content from the *shared-apps* folder:
-- **@shared-apps-module** - this path will refer to a module in the shared-apps folder (named SharedAppsModule) that will export
-all the shared components, directives and pipes.<br>
-The shared module of each application will import this module:
+- **@shared-apps-module** - this path will refer to a module in the shared-apps folder named SharedAppsModule that will export all the shared components, directives and pipes.<br>
+This module will be imported in each application's shared module:<br>
 ````
 import { SharedAppsModule } from '@shared-apps-module';
 .
@@ -28,7 +28,7 @@ imports: [SharedAppsModule];
 ````
 
 - **@shared-apps** - this path refers to the *shared-apps/src/app/** folder hierarchy.<br>
-for example, if we have some interface named SomeModel which resides in shared-apps/src/app/models/some.model.ts, then we will import it like that:
+For example, if we have an interface named SomeModel located at shared-apps/src/app/models/some.model.ts, then we will import it in our app like that:
 ````
 import { someModel } from '@shared-apps/models/some.model';
 ````
@@ -39,14 +39,14 @@ this path refers to the shared-stack folder, here is an example:
 import { ServerResponse } from '@shared-stack/models/server-response.model';
 ````
 
-<br>
+<br><br>
 
 ## Serving an application
 To server an app, you can either run 'ng s APP_NAME' or 'npm run APP_NAME'.<br>
 app1 is the default when serving, so 'ng s' or 'npm start' are enough to run it.<br><br>
 To run the server: 'npm run server'
 
-<br>
+<br><br>
 
 ## Set your working environment to LF:
 Different operating systems have different characters to mark an end of a line.<br>
@@ -78,22 +78,63 @@ more explanation here: &nbsp;https://stackoverflow.com/questions/1967370/git-rep
 - for the current project: git config core.autocrlf input
 - globally for all git projects: git config --global core.autocrlf input
 
-<br>
+<br><br>
 
 ## Creating a new application in the repository
 
 Here are the steps to create a new application:
-1. in the root directory: ng g app APP_NAME --prefix=APP_PREFIX [--skipTests=true]  // skipTest will not generate spec.ts files.<br>
+1. in the root directory: ng g app APP_NAME --prefix=APP_PREFIX --skip-package-json=true  [--skip-tests=true]  // skipTest will not generate spec.ts files.<br>
    this will create a folder APP_NANE and add entry in angular.json.
 2. goto APP_NAME folder and delete all files except 'tsconfig.app.json' and the 'src' folder.
-3. in the 'src' folder create 'styles' folder and move 'styles.scss' to there.
+3. in the 'src' folder create 'styles' folder and move 'styles.scss' into it.
 4. in angular.json update the following in the APP_NAME entry under architect:
-  - (optional) build.options.styles:  change to "APP_NAME/src/styles/styles.scss"
+  - build.options.styles:  change to "APP_NAME/src/styles/styles.scss"
   - delete "extract-i18n" section
   - (optional) delete "test" section
   - lint.options.lintFilePatterns:  add line "shared-apps/src/app/**/*.ts"
 5. delete file APP_NAME/src/test.ts
-6. change the entry in angular.json for the tsconfig file location to point to 'tsconfig.json' instead of 'tsconfig.app.json', that is because vscode works with tsconfig.json only.<br>
-in the app folder make sure to work with 'tsconfig.json', copy everything needed from 'tsconig.app.json' and then delete it.<br>
-look at another application's tsconfig.json for other configration needed such as paths (aliases) etc.
+6. rename 'tsconfig.app.json' to 'tsconfig.json' and create a sibling 'tsconfig.app.json' that will contain:
+````
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.stub.ts",
+    "src/environments/*.ts",
+    "../shared-apps/src/app/**/*.ts"
+  ]
+}
+````
+7. in 'tsconfig.json' make the changes in the sections 'extends', 'compilerOptions' and 'include'.<br>
+extends - the file should extend the root 'tsconfig.json'<br>
+compilerOptions - should include a baseUrl and your path aliases<br>
+include - a line should be added having glob of the shared-apps folder, this will enable intellisense on the shared content<br><br>
+The file should like something like that:
+
+
+````
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@shared-apps/*": ["../shared-apps/src/app/*"],
+      "@shared-apps-module": ["../shared-apps/src/shared-apps.module.ts"],
+      "@shared-stack/*": ["../shared-stack/*"]
+    }
+  },
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "include": [
+    "src/**/*.d.ts",
+    "../shared-apps/src/app/**/*.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts",
+    "**/*.stub.ts"
+  ]
+}
+````
 7. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.

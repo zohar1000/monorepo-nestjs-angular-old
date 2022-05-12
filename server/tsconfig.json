@@ -1,14 +1,15 @@
 {
 	"extends": "../tsconfig.json",
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "emitDecoratorMetadata": true,
-    "module": "commonjs",
+	"compilerOptions": {
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "commonjs",
 		"noEmit": false,
 		"preserveSymlinks": true,
 		"paths": {
 			"@shared-stack/*": ["shared-stack/*"]
 		}
-  },
+	},
 	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

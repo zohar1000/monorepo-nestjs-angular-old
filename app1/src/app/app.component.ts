@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Test1Model } from '@shared-apps/models/test1.model';
+import { Test9Model } from '@shared-apps/models/test9.model';
 import { Severity } from './enums/severity.enum';
 
 @Component({
@@ -8,7 +8,7 @@ import { Severity } from './enums/severity.enum';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  test: Test1Model = {
+  test: Test9Model = {
     prop1: Severity.Error,
     prop2: 'a'
   };
