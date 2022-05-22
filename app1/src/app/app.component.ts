@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Severity } from '@enums/severity.enum';
 import { Test9Model } from '@shared-apps/models/test9.model';
-import { Severity } from './enums/severity.enum';
 
 @Component({
   selector: 'app-root',
