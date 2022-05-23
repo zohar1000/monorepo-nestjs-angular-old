@@ -42,7 +42,7 @@ import { ServerResponse } from '@shared-stack/models/server-response.model';
 <br><br>
 
 ## Serving an application
-To server an app, you can either run 'ng s APP_NAME' or 'npm run APP_NAME'.<br>
+To serve an app, you can either run 'ng s APP_NAME' or 'npm run APP_NAME'.<br>
 app1 is the default when serving, so 'ng s' or 'npm start' are enough to run it.<br><br>
 To run the server: 'npm run server'
 
