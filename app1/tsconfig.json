@@ -17,7 +17,7 @@
   "include": [
     "src/**/*.d.ts",
     "src/**/*.ts",
-    "../shared-apps/src/app/**/*.ts"
+    "../shared-apps/src/**/*.ts"
   ],
   "exclude": [
     "**/*.spec.ts",

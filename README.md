@@ -97,11 +97,8 @@ Here are the steps to create a new application:
 ````
 {
   "extends": "./tsconfig.json",
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.stub.ts",
-    "src/environments/*.ts",
-    "../shared-apps/src/app/**/*.ts"
+  "include": [
+    "src/**/*.d.ts"
   ]
 }
 ````
@@ -129,6 +126,7 @@ The file should like something like that:
   ],
   "include": [
     "src/**/*.d.ts",
+    "src/**/*.ts",
     "../shared-apps/src/app/**/*.ts"
   ],
   "exclude": [
@@ -137,4 +135,4 @@ The file should like something like that:
   ]
 }
 ````
-7. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
+8. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
