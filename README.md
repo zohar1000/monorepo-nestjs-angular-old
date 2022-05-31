@@ -16,7 +16,7 @@ pnpm is used here to install dependencies, if you use npm or yarn then delete pn
 
 ## working with the shared folders
 The code which is shared between all apps is in 'shared-apps' folder.<br>
-The code which is shared between the apps and the server is in 'shared-stack' folder.<br>
+The code which is shared between the apps and the server is in 'shared-all' folder.<br>
 ### shared-apps
 The applications can use 2 paths to import content from the *shared-apps* folder:
 - **@shared-apps-module** - this path will refer to a module in the shared-apps folder named SharedAppsModule that will export all the shared components, directives and pipes.<br>
@@ -33,10 +33,10 @@ For example, if we have an interface named SomeModel located at shared-apps/src/
 import { someModel } from '@shared-apps/models/some.model';
 ````
 
-### shared-stack
-this path refers to the shared-stack folder, here is an example:
+### shared-all
+this path refers to the shared-all folder, here is an example:
 ````
-import { ServerResponse } from '@shared-stack/models/server-response.model';
+import { ServerResponse } from '@shared-all/models/server-response.model';
 ````
 
 <br><br>
@@ -117,7 +117,7 @@ The file should like something like that:
     "paths": {
       "@shared-apps/*": ["../shared-apps/src/app/*"],
       "@shared-apps-module": ["../shared-apps/src/shared-apps.module.ts"],
-      "@shared-stack/*": ["../shared-stack/*"]
+      "@shared-all/*": ["../shared-all/*"]
     }
   },
   "files": [

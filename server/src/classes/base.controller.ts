@@ -1,4 +1,4 @@
-import { ServerResponse } from '@shared-stack/models/server-response.model';
+import { ServerResponse } from '@shared-all/models/server-response.model';
 
 export class BaseController {
 
