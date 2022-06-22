@@ -49,12 +49,27 @@
             "tsConfig": "app1/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "app1/src/favicon.ico",
-              "app1/src/assets"
-            ],
+							{
+								"glob": "favicon.ico",
+								"input": "app1/src",
+								"output": "assets"
+							},
+							{
+								"glob": "**/*",
+								"input": "assets",
+								"output": "assets"
+							}
+						],
             "styles": [
-              "app1/src/styles/styles.scss"
+              "app1/src/styles/styles.scss",
+							"shared-apps/src/assets/css/boostrap5.css"
             ],
+						"stylePreprocessorOptions": {
+							"includePaths": [
+								"shared-apps/src/styles",
+								"app1/src/styles"
+							]
+						},
             "scripts": []
           },
           "configurations": {
@@ -160,12 +175,26 @@
             "tsConfig": "app2/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "app2/src/favicon.ico",
-              "app2/src/assets"
-            ],
+							{
+								"glob": "favicon.ico",
+								"input": "app2/src",
+								"output": "assets"
+							},
+							{
+								"glob": "**/*",
+								"input": "assets",
+								"output": "assets"
+							}
+						],
             "styles": [
               "app2/src/styles/styles.scss"
             ],
+						"stylePreprocessorOptions": {
+							"includePaths": [
+								"shared-apps/src/styles",
+								"app2/src/styles"
+							]
+						},
             "scripts": []
           },
           "configurations": {

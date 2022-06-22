@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Severity } from '@enums/severity.enum';
+import { Severity } from './shared/enums/severity.enum';
 import { Test9Model } from '@shared-apps/models/test9.model';
 
 @Component({
