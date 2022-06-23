@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Severity } from './shared/enums/severity.enum';
-import { Test9Model } from '@shared-apps/models/test9.model';
+import { AuthService } from '@shared-apps/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +8,15 @@ import { Test9Model } from '@shared-apps/models/test9.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  test: Test9Model = {
-    prop1: Severity.Error,
-    prop2: 'a'
-  };
+  isLoggedIn$ = this.authService.isLoggedIn$;
 
-  time = Date.now();
+  constructor(private authService: AuthService, private router: Router) {
+    if (!this.authService.isAccessToken()) {
+      this.authService.isLoggedIn$.next(false);
+      this.router.navigate(['/login']);
+    } else {
+
+    }
+  }
+
 }

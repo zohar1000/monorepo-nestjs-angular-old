@@ -1,5 +1,11 @@
-<div>App1 works! {{time}}</div>
+<!--<ng-container>-->
+<!--  <ng-container *ngIf="isLoggedIn$ | async">-->
+<!--    <app-login></app-login>-->
+<!--  </ng-container>-->
 
-<app-test1></app-test1>
+<!--  <ng-container *ngIf="!(isLoggedIn$ | async)">-->
+<!--    <app1-home></app1-home>-->
+<!--  </ng-container>-->
+<!--</ng-container>-->
 
-<app1-child1></app1-child1>
+<router-outlet></router-outlet>
