@@ -6,7 +6,8 @@
 		"paths": {
 			"@shared-apps/*": ["../shared-apps/src/app/*"],
 			"@shared-apps-module": ["../shared-apps/src/shared-apps.module.ts"],
-			"@shared-all/*": ["../shared-all/*"]
+			"@shared-all/*": ["../shared-all/*"],
+			"@env/*": ["../apps-shared/src/environments/*"]
 		}
 	},
 	"files": [
@@ -14,8 +15,7 @@
 	  "src/polyfills.ts"
 	],
 	"include": [
-	  "src/**/*.d.ts",
-	  "../shared-apps/src/**/*.ts"
+	  "src/**/*.d.ts"
 	],
 	"exclude": [
 	  "**/*.spec.ts",

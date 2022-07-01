@@ -80,59 +80,61 @@ more explanation here: &nbsp;https://stackoverflow.com/questions/1967370/git-rep
 
 <br><br>
 
+## Assets
+Assets are in the root folder, in this way both the IDE and the compiler can find it.
+
+<br><br>
+
+## Environment Files
+Environment files are in the shared-apps/src/environments folder and are shared to all apps.
+
+<br><br>
+
+## Schematics and pnpm
+When using pnpm instead of npm as the package manager the angular schematics will not show
+up in the IDE although they will be available in the command line.<br>
+This is because the schematics package is in the .pnpm folder instead of the node_modules
+which causes the IDE to ignore it.<br>
+In order to provide the schematics, the package '@schematics/angular' is
+installed as a dev dependency.
+
+<br><br>
+
 ## Creating a new application in the repository
 
 Here are the steps to create a new application:
-1. in the root directory: ng g app APP_NAME --prefix=APP_PREFIX --skip-package-json=true  [--skip-tests=true]  // skipTest will not generate spec.ts files.<br>
+2. in the root directory: ng g app APP_NAME --prefix=APP_PREFIX --skip-package-json=true  [--skip-tests=true]  // skipTest will not generate spec.ts files.<br>
    this will create a folder APP_NANE and add entry in angular.json.
-2. goto APP_NAME folder and delete all files except 'tsconfig.app.json' and the 'src' folder.
-3. in the 'src' folder create 'styles' folder and move 'styles.scss' into it.
-4. in angular.json update the following in the APP_NAME entry under architect:
+3. goto APP_NAME folder and delete all files except 'tsconfig.json', 'tsconfig.app.json' and the 'src' folder.
+4. in the 'src' folder create 'styles' folder and move 'styles.scss' into it.
+5. in angular.json update the following in the APP_NAME entry under architect:
   - build.options.styles:  change to "APP_NAME/src/styles/styles.scss"
-  - delete "extract-i18n" section
-  - (optional) delete "test" section
+  - (optional) delete "extract-i18n" and the "test" sections
   - lint.options.lintFilePatterns:  add line "shared-apps/src/app/**/*.ts"
-5. delete file APP_NAME/src/test.ts
-6. rename 'tsconfig.app.json' to 'tsconfig.json' and create a sibling 'tsconfig.app.json' that will contain:
-````
-{
-  "extends": "./tsconfig.json",
-  "include": [
-    "src/**/*.d.ts"
-  ]
-}
-````
-7. in 'tsconfig.json' make the changes in the sections 'extends', 'compilerOptions' and 'include'.<br>
-extends - the file should extend the root 'tsconfig.json'<br>
-compilerOptions - should include a baseUrl and your path aliases<br>
-include - a line should be added having glob of the shared-apps folder, this will enable intellisense on the shared content<br><br>
-The file should like something like that:
-
-
-````
-{
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "@shared-apps/*": ["../shared-apps/src/app/*"],
-      "@shared-apps-module": ["../shared-apps/src/shared-apps.module.ts"],
-      "@shared-all/*": ["../shared-all/*"]
-    }
+5. (optional) delete file APP_NAME/src/test.ts
+6. set the 'assets' property as:
+```angular2html
+"assets": [
+  {
+    "glob": "favicon.ico",
+    "input": "APP_NAME/src",
+    "output": "assets"
   },
-  "files": [
-    "src/main.ts",
-    "src/polyfills.ts"
-  ],
-  "include": [
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "../shared-apps/src/app/**/*.ts"
-  ],
-  "exclude": [
-    "**/*.spec.ts",
-    "**/*.stub.ts"
+  {
+    "glob": "**/*",
+    "input": "assets",
+    "output": "assets"
+  }
+]
+```
+7. set the 'stylePreprocessorOptions' property as:
+```angular2html
+"stylePreprocessorOptions": {
+  "includePaths": [
+    "apps-shared/src/styles",
+    "medical-record/src/styles"
   ]
 }
-````
-8. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
+```
+8. for 'tsconfig.json' file, fill it with a copy from another app.
+9. add scripts in package.json, copy the script of the 'app1' application and paste them changing 'app1' to APP_NAME.
