@@ -103,7 +103,6 @@
 				"no-duplicate-imports": "off", // Disallows duplicate imports.
 
 				"@typescript-eslint/brace-style": "error",
-				"@typescript-eslint/indent": ["error", 2],
 				"@typescript-eslint/comma-dangle": "error",
 				"@typescript-eslint/comma-spacing": "error",
 				"@typescript-eslint/consistent-indexed-object-style": ["error", "index-signature"],

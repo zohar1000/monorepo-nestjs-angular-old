@@ -62,7 +62,7 @@
 						],
             "styles": [
               "app1/src/styles/styles.scss",
-							"shared-apps/src/assets/css/boostrap5.css"
+							"assets/css/boostrap5.css"
             ],
 						"stylePreprocessorOptions": {
 							"includePaths": [
@@ -187,7 +187,8 @@
 							}
 						],
             "styles": [
-              "app2/src/styles/styles.scss"
+              "app2/src/styles/styles.scss",
+							"assets/css/boostrap5.css"
             ],
 						"stylePreprocessorOptions": {
 							"includePaths": [
@@ -278,7 +279,6 @@
       }
     }
   },
-  "defaultProject": "app1",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

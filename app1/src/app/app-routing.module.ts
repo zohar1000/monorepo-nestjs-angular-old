@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@shared-apps/guards/auth.guard';
 
 const routes: Routes = [
-  // { path: 'login', loadChildren: () => import('./auth/login/login.module').then(m => m.LoginModule) },
-  { path: '', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule), canActivate: [AuthGuard] }
+  { path: 'login', loadComponent: () => import('../../../shared-apps/src/app/components/login/login.component').then(m => m.LoginComponent) },
+  { path: '', loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { initialNavigation: 'disabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

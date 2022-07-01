@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class="form-container">
+  <div>Login Form</div>
+
+  <form [formGroup]="formGroup">
+    <div>
+      <input formControlName="userName" class="form-control" placeholder="User Name">
+    </div>
+    <div>
+      <input [formControlName]="'password'" class="form-control" placeholder="Password">
+    </div>
+  </form>
+
+  <button type="button" class="btn btn-primary">Login</button>
+</div>
