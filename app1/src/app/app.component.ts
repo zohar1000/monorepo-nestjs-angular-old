@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { Severity } from '@enums/severity.enum';
-import { Test9Model } from '@shared-apps/models/test9.model';
+import { Component, OnInit } from '@angular/core';
+import { ApiService } from './services/api.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  test: Test9Model = {
-    prop1: Severity.Error,
-    prop2: 'a'
-  };
-
+export class AppComponent implements OnInit {
   time = Date.now();
+
+  constructor(private apiService: ApiService) {
+    console.log('app component con, serverUrl:', this.apiService.serverUrl);
+  }
+
+  ngOnInit() {
+    console.log('app component on init, serverUrl:', this.apiService.serverUrl);
+  }
 }
