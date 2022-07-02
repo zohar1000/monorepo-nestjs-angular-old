@@ -7,7 +7,7 @@
 		"esModuleInterop": true,
 		"emitDecoratorMetadata": true,
 		"experimentalDecorators": true,
-		"module": "nodenext",
+		"module": "commonjs",
 		"moduleResolution": "nodenext",
 		"noEmit": false,
 		"preserveSymlinks": true,
@@ -15,12 +15,7 @@
 		"target": "es2020",
 		"paths": {
 			"@shared-all/*": ["shared-all/*"]
-		},
-		"typeRoots": [
-			"node_modules/@types",
-			"types"
-		]
+		}
 	},
-	"include": ["src/**/*.*"],
 	"exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
 }

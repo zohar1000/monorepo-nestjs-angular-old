@@ -28,8 +28,8 @@ export class EncryptionService {
   }
 
   decryptText(token): string {
-    const iv = Buffer.from(token.substr(0, this.encryptionConfig.ivLen * 2), 'hex');
-    const encryptedText = Buffer.from(token.substr(this.encryptionConfig.ivLen * 2), 'hex');
+    const iv = Buffer.from(token.substring(0, this.encryptionConfig.ivLen * 2), 'hex');
+    const encryptedText = Buffer.from(token.substring(this.encryptionConfig.ivLen * 2), 'hex');
     const decipher = crypto.createDecipheriv(this.encryptionConfig.algorithm, Buffer.from(this.bufferedConfirmationEncKey), iv);
     let decrypted = decipher.update(encryptedText);
     decrypted = Buffer.concat([decrypted, decipher.final()]);

@@ -1,7 +1,6 @@
 {
   "name": "monorepo-nestjs-angular",
   "version": "1.0.0",
-	"type": "module",
   "scripts": {
     "app1": "ng serve app1",
     "app1:build": "ng build app1",
@@ -42,7 +41,9 @@
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^8.1.4",
     "@nestjs/websockets": "8.x",
+    "dompurify": "^2.3.8",
     "dotenv": "^10.0.0",
+    "jsdom": "^20.0.0",
     "json5": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "ngx-bootstrap": "^8.0.0",
@@ -54,7 +55,8 @@
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
     "typeorm": "^0.3.6",
-    "zone.js": "^0.11.6"
+    "zone.js": "^0.11.6",
+    "zshared": "^1.0.11"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.0.3",

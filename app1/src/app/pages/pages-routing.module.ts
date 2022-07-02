@@ -7,7 +7,7 @@ import { HomeComponent } from './home/home.component';
 // import { ContentComponent } from './content.component';
 
 const routes: Routes = [
-  { path: 'login', loadChildren: () => import('../../../../shared-apps/src/app/components/login/login.component').then(m => m.LoginComponent) },
+  { path: 'login', loadChildren: () => import('../../../../shared-apps/src/app/components/login/login.component').then(m => m.LoginComponent) }
     // path: '', component: HomeComponent, children: [
       // { path: 'simulation', component: SimulationComponent },
       // { path: 'result', loadChildren: () => import('./pages/result/result.module').then(m => m.ResultModule) },

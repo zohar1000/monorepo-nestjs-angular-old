@@ -19,7 +19,7 @@ export interface AppConfig {
       accessTokenSecretKey: string;
       refreshTokenExpiresIn: number | string;
       refreshTokenSecretKey: string;
-    }
+    };
   };
   logging: {
     isDebug: boolean;
@@ -41,13 +41,13 @@ export interface AppConfig {
     mailStatusLink: string; // e.g., 'https://app.mailgun.com/app/sending/domains/{domain name}/logs',
   };
   encryption: {
-    algorithm: string,
-    key: string, // must be 32 chars
-    ivLen: number,
+    algorithm: string;
+    key: string; // must be 32 chars
+    ivLen: number;
     password: {
-      saltSize: number,
-      saltFormat: string,
+      saltSize: number;
+      saltFormat: string;
       algorithm: string;
-    }
-  }
+    };
+  };
 }

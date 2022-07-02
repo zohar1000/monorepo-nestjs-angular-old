@@ -13,7 +13,7 @@ export class AppComponent {
   constructor(private authService: AuthService, private router: Router) {
     if (!this.authService.isAccessToken()) {
       this.authService.isLoggedIn$.next(false);
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']).then();
     } else {
 
     }

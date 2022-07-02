@@ -15,9 +15,7 @@
     "src/polyfills.ts"
   ],
   "include": [
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "../shared-apps/src/**/*.ts"
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "**/*.spec.ts",

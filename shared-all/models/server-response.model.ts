@@ -4,5 +4,5 @@ export interface ServerResponse {
   error?: {
     code?: string | number;
     message: string;
-  }
+  };
 }

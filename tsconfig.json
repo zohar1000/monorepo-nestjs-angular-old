@@ -28,11 +28,12 @@
     "strictPropertyInitialization": false,
     "target": "es2020",
 		"lib": [
-      "es2020", 
+      "es2020",
       "dom"
     ],
 		"paths": {
-			"@angular/*": ["node_modules/@angular/*"]
+			"@angular/*": ["node_modules/@angular/*"],
+			"@shared-all/*": ["shared-all/*"]
 		},
 		"typeRoots": [
 			"node_modules/@types"
