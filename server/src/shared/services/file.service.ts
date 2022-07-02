@@ -2,7 +2,8 @@ import * as fs from 'fs';
 import { Injectable } from '@nestjs/common';
 import { FileUtilsOptions } from '../models/file-utils-options.model';
 const fsPromises = fs.promises;
-const path = require('path');
+// const path = require('path');
+import * as path from 'path';
 
 @Injectable()
 export class FileService {

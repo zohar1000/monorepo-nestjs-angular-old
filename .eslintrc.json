@@ -53,7 +53,6 @@
 				"valid-typeof": "error", // This rule enforces comparing typeof expressions to valid string literals.
 				"block-scoped-var": "error", // Enforces treating var as block scoped.
 				"no-loss-of-precision": "error", // Disallows number literals that lose precision.
-				"no-async-promise-executor": "error", // Disallows using an async function as a Promise executor
 				"no-constructor-return": "error", // don't allow constactor with return
 				"no-dupe-else-if": "error", // Disallows duplicate conditions in if-else-if chains
 				"no-setter-return": "error", // Disallows returning values from setters.
@@ -63,7 +62,6 @@
 
 				// WARN RULES
 				"getter-return": "warn", // Enforces that a return statement is present in property getters
-				"no-await-in-loop": "warn", // asynchronous operations immediately started in loop ?.
 				"no-class-assign": "warn", // Disallows modifying variables of class declarations.
 				"no-constant-condition": "warn", // Disallows constant expressions in conditions.
 				"no-empty-character-class": "warn", // Disallows empty character classes in regular expressions.

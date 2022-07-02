@@ -1,6 +1,7 @@
 {
   "name": "monorepo-nestjs-angular",
   "version": "1.0.0",
+	"type": "module",
   "scripts": {
     "app1": "ng serve app1",
     "app1:build": "ng build app1",

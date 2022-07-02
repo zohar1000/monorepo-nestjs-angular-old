@@ -1,14 +1,15 @@
 // the following 2 lines should be first - initializing process.env variables
-import { EnvService } from './services/env.service';
-EnvService.initProcessEnvVars();
+import { ConfigService } from './shared/services/config.service';
+ConfigService.initProcessEnvVars();
 import { AppModule } from './app.module';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
-import { AllExceptionsFilter } from './exception-filters/all-exceptions-filter';
+import { AllExceptionsFilter } from './shared/exception-filters/all-exceptions-filter';
 
 function setConsoleLog() {
   console['orgLog'] = console.log;
   console.log = (...params) => {
-    const time = (new Date()).toISOString().replace('T', ' ').substring(0, 19);
+    const date = new Date();
+    const time = date.toISOString().replace('T', ' ').substring(0, 19);
     console['orgLog'](time, ...params);
   };
 }
