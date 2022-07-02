@@ -10,6 +10,7 @@ import { RoleRate } from '@shared-all/consts/role-rate.const';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '@shared-all/models/entities/user.entity';
 import { Repository } from 'typeorm';
+import { Role } from '@shared-all/enums/role.enum';
 
 @Injectable()
 export class UserService extends BaseEntityService {
@@ -24,8 +25,10 @@ export class UserService extends BaseEntityService {
       _id: true,
       userName: true,
       email: true,
+      status: true,
       role: true,
-      firstName: true
+      firstName: true,
+      lastName: true
     }
   }
 

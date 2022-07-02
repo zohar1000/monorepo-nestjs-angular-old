@@ -22,9 +22,7 @@ export class GlobalService {
       inst.sanitationService = globalServices.sanitationService;
       // this.appEventsService = globalServices.appEventsService;
       // this.mailService = globalServices.mailService;
-      setTimeout(() => {
-        subscription.unsubscribe();
-      });
+      setTimeout(() => subscription.unsubscribe(), 0);
     });
   }
 }

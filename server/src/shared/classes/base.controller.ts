@@ -20,8 +20,8 @@ export class BaseController {
 		return { isSuccess: true, data };
 	}
 
-  errorResponse(error): ServerResponse {
-		return { isSuccess: false, error: { message: error.message } };
+  errorResponse(message = ''): ServerResponse {
+		return { isSuccess: false, error: { message } };
 	}
 
   protected exceptionResponse(message, status = this.DEFAULT_ERROR_CODE) {

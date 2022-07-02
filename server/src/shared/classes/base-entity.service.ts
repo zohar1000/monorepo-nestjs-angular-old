@@ -60,10 +60,10 @@ export abstract class BaseEntityService extends BaseService {
   // async updateOne(query, fields): Promise<any> {
   //   return this.mongoService.updateOne(this.collectionName, query, fields);
   // }
-  //
-  // async updateById(id, fields): Promise<any> {
-  //   return this.mongoService.updateOne(this.collectionName, {  _id: id }, fields);
-  // }
+
+  async updateById(id, fields): Promise<any> {
+    return this.repository.update({ _id: id }, fields);
+  }
 
   /*************************/
   /*      D E L E T E      */

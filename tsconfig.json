@@ -28,8 +28,7 @@
     "strictPropertyInitialization": false,
     "target": "es2020",
 		"lib": [
-      "es2020",
-      "dom"
+      "es2020"
     ],
 		"paths": {
 			"@angular/*": ["node_modules/@angular/*"],
