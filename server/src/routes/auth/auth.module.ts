@@ -4,18 +4,23 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './services/auth.service';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
-import { appConfig } from '../../shared/consts/app-config';
-import { JwtModule } from '@nestjs/jwt';
+import { serverConfig } from '../../shared/consts/server-config';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { EncryptionService } from '../../shared/services/encryption.service';
+import { UserService } from '../../shared/services/entities/user.service';
+import { User } from '@shared-all/models/entities/user.entity';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
   imports: [
     PassportModule,
+    TypeOrmModule.forFeature([User]),
     JwtModule.register({
-      secret: appConfig.auth.jwt.accessTokenSecretKey,
-      signOptions: { expiresIn: appConfig.auth.jwt.accessTokenExpiresIn }
+      secret: serverConfig.auth.jwt.accessTokenSecretKey,
+      signOptions: { expiresIn: serverConfig.auth.jwt.accessTokenExpiresIn }
     })
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy]
+  providers: [AuthService, LocalStrategy, JwtStrategy, JwtService, EncryptionService, UserService]
 })
 export class AuthModule {}

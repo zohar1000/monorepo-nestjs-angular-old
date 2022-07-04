@@ -1,13 +1,20 @@
-export interface AppConfig {
+export interface ServerConfig {
   env: string;
   isProduction: string;
   brandName: string;
   host: string;
   port: number;
   globalApiPrefix: string;
-  mongo: {
-    connStr: string;
-    dbName: string;
+  mongodb: {
+    type: 'mongodb';
+    url: string;
+    useNewUrlParser: boolean;
+    synchronize: boolean;
+    logging: boolean;
+    entities: Array<any>;
+    retryAttempts: number;
+    autoLoadEntities: boolean;
+    verboseRetryLog: boolean;
   };
   paths: {
     assetsFolder: string;

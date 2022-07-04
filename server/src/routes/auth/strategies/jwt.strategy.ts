@@ -3,7 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable } from '@nestjs/common';
 import { UserStatus } from '../enums/user-status.enum';
 import { UserService } from '../../../shared/services/entities/user.service';
-import { appConfig } from '../../../shared/consts/app-config';
+import { serverConfig } from '../../../shared/consts/server-config';
 import { User } from '@shared-all/models/entities/user.entity';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
-      secretOrKey: appConfig.auth.jwt.accessTokenSecretKey
+      secretOrKey: serverConfig.auth.jwt.accessTokenSecretKey
     });
   }
 

@@ -13,7 +13,7 @@ import { ServerLoginResponse } from '@shared-all/models/server-login-response.mo
 import { User } from '@shared-all/models/entities/user.entity';
 import { UserProfile } from '@shared-all/models/entities/user-profile.model';
 import { RefreshTokenResponse } from '@shared-all/models/refresh-token-response.model';
-import { appConfig } from '../../../shared/consts/app-config';
+import { serverConfig } from '../../../shared/consts/server-config';
 
 @Injectable()
 export class AuthService extends BaseService {
@@ -99,7 +99,7 @@ export class AuthService extends BaseService {
         console.log(`password has been changed for user ${userDoc._id}/${email}, the new password is: ${verbalPassword}`);
         const password = this.encryptionService.getHashedPassword(verbalPassword);
         await this.userService.updateById(userDoc._id, {password});
-        const subject = appConfig.brandName + ' support - reset password';
+        const subject = serverConfig.brandName + ' support - reset password';
         const body = 'Your password has been reset.<br/><br/>Your new password is: ' + verbalPassword;
         // await this.mailService.send(email, subject, body);
         resolve();
@@ -165,14 +165,14 @@ export class AuthService extends BaseService {
   }
 
   async getAccessToken(payload) {
-    return this.jwtService.signAsync({ sub: payload }, { expiresIn: appConfig.auth.jwt.accessTokenExpiresIn });
+    return this.jwtService.signAsync({ sub: payload }, { expiresIn: serverConfig.auth.jwt.accessTokenExpiresIn });
   }
 
   async getRefreshToken(payload) {
     return new Promise<any>(async (resolve, reject) => {
       try {
-        const opts = { expiresIn: appConfig.auth.jwt.refreshTokenExpiresIn };
-        jwt.sign(payload, appConfig.auth.jwt.refreshTokenSecretKey, opts, (err, token) => {
+        const opts = { expiresIn: serverConfig.auth.jwt.refreshTokenExpiresIn };
+        jwt.sign(payload, serverConfig.auth.jwt.refreshTokenSecretKey, opts, (err, token) => {
           if (err) {
             reject(err);
           } else {
@@ -189,7 +189,7 @@ export class AuthService extends BaseService {
   async verifyRefreshToken(token) {
     return new Promise(async (resolve, reject) => {
       try {
-        jwt.verify(token, appConfig.auth.jwt.refreshTokenSecretKey, (err, decoded) => {
+        jwt.verify(token, serverConfig.auth.jwt.refreshTokenSecretKey, (err, decoded) => {
           if (err) {
             resolve(null);
           } else {

@@ -4,7 +4,7 @@ ConfigService.initProcessEnvVars();
 import { AppModule } from './app.module';
 import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AllExceptionsFilter } from './shared/exception-filters/all-exceptions-filter';
-import { appConfig } from './shared/consts/app-config';
+import { serverConfig } from './shared/consts/server-config';
 
 function setConsoleLog() {
   console['orgLog'] = console.log;
@@ -20,8 +20,8 @@ async function bootstrap() {
   app.enableCors();
   const { httpAdapter } = app.get(HttpAdapterHost);
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapter));
-  await app.listen(appConfig.port);
-  console.log('server is listening on port:', appConfig.port);
+  await app.listen(serverConfig.port);
+  console.log('server is listening on port:', serverConfig.port);
 }
 
 bootstrap().then();

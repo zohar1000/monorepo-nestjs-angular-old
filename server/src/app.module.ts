@@ -5,9 +5,17 @@ import { ErrorService } from './shared/services/error.service';
 import { FileService } from './shared/services/file.service';
 import { SanitationService } from './shared/services/sanitation.service';
 import { GlobalService } from './shared/services/global.service';
+import { UserModule } from './routes/user/user.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { serverConfig } from './shared/consts/server-config';
+import { User } from '@shared-all/models/entities/user.entity';
+import { AuthModule } from './routes/auth/auth.module';
+
+serverConfig.mongodb.entities = [User];
 
 @Module({
-  imports: [HttpModule],
+  imports: [HttpModule, UserModule, AuthModule, TypeOrmModule.forRoot(serverConfig.mongodb)],
+  // imports: [HttpModule, UserModule, TypeOrmModule.forRoot('mongodb://test:test@localhost:27017/coin-razor')],
   controllers: [AppController],
   providers: [ErrorService, FileService, SanitationService]
 })
